@@ -1,0 +1,15 @@
+{
+  "name": "pentom",
+  "version": "1.0.0",
+  "description": "Thanks for downloading this theme!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ronen Pinhasov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4"
+  }
+}
