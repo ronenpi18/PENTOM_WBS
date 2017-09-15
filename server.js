@@ -25,6 +25,30 @@ app.get('/subscribe', function (req, res) {
     });
 
 })
+app.get('/form', function (req, res) {
+    var name = req.query.name;
+    var email = req.query.email;
+    var subject = req.query.subject;
+    var msg = req.query.msg;
+    var companySize = req.query.size;
+    var objectForm = {
+        "name":name,
+        "email":email,
+        "msg":msg,
+        "size":companySize
+
+    }
+    console.log(req,query.email)
+    fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        res.send(console.log("The file was saved!"));
+    });
+
+})
+
+
 // finally, let's start our server...
 var server = app.listen( process.env.PORT || 8081, function(){
     console.log('Listening on port ' + server.address().port);

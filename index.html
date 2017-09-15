@@ -41,10 +41,20 @@
     function subs(){
       var xhttp = new XMLHttpRequest();
       var x = document.getElementById("email1").value;
-      xhttp.open("GET", "http://127.0.0.1/subscribe?email=" + x, true);
+      xhttp.open("GET", "https://pentom.herokuapp.com/subscribe?email=" + x, true);
       xhttp.send();
       document.getElementById("btnsub").textContent="Thanks A lot!!";
     }
+    function form(){
+      var email = document.getElementById("email").value;
+      var size = document.getElementById("size").value;
+      var msg = document.getElementById("msg").value;
+      var name = document.getElementById("name").value;
+      xhttp.open("GET", "https://pentom.herokuapp.com/form?email=" + email+"&name="+name+"&msg="+msg+"&size="+size, true);
+      xhttp.send();
+      document.getElementById("btnSubmit").textContent="Thanks A lot, we will contact you shortly!"
+    }
+
   </script>
 <!-- =======================================================
   Theme Name: Imperial
@@ -84,7 +94,7 @@
     <div class="container">
     
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/logo1.png" alt="" title="PENTOM" /></img></a>
+        <a href="#hero"><img src="img/logo1.png" alt="" title="PENTOM" /></a>
         <!-- Uncomment below if you prefer to use a text image -->
         <!--<h1><a href="#hero">Header 1</a></h1>-->
       </div>
@@ -367,44 +377,31 @@
         </div>
       </div>
       
+
+        <!-- -->
+        <div class="col-md-3">
+          <div class="member">
+          </div>
+        </div>
       <div class="row">
         <div class="col-md-3">
           <div class="member">
-            <div class="pic"><img src="img/team-1.jpg" alt=""></div>
-            <h4>Walter White</h4>
-            <span>Chief Executive Officer</span>
+            <div class="pic"><img src="img/daniel.jpg" alt=""></div>
+            <h4>Daniel Pinhasov</h4>
+            <span>Chief Financial Officer</span>
             <div class="social">
-              <a href=""><i class="fa fa-twitter"></i></a>
               <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-google-plus"></i></a>
               <a href=""><i class="fa fa-linkedin"></i></a>
             </div>
           </div>
         </div>
-        
         <div class="col-md-3">
           <div class="member">
-            <div class="pic"><img src="img/team-2.jpg" alt=""></div>
-            <h4>Sarah Jhinson</h4>
-            <span>Product Manager</span>
-            <div class="social">
-              <a href=""><i class="fa fa-twitter"></i></a>
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-google-plus"></i></a>
-              <a href=""><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-3">
-          <div class="member">
-            <div class="pic"><img src="img/team-3.jpg" alt=""></div>
-            <h4>William Anderson</h4>
+            <div class="pic"><img src="img/ronen.jpg" alt=""></div>
+            <h4>Ronen Pinhasov</h4>
             <span>CTO</span>
             <div class="social">
-              <a href=""><i class="fa fa-twitter"></i></a>
               <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-google-plus"></i></a>
               <a href=""><i class="fa fa-linkedin"></i></a>
             </div>
           </div>
@@ -412,15 +409,9 @@
         
         <div class="col-md-3">
           <div class="member">
-            <div class="pic"><img src="img/team-4.jpg" alt=""></div>
-            <h4>Amanda Jepson</h4>
-            <span>Accountant</span>
-            <div class="social">
-              <a href=""><i class="fa fa-twitter"></i></a>
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-google-plus"></i></a>
-              <a href=""><i class="fa fa-linkedin"></i></a>
-            </div>
+            <!--<div class="pic"><img src="img/none.jpg" alt=""></div>-->
+            <!--<h4></h4>-->
+            <!--<span></span>-->
           </div>
         </div>
         
@@ -446,17 +437,17 @@
           <div class="info">
             <div>
               <i class="fa fa-map-marker"></i>
-              <p>A108 Adam Street<br>New York, NY 535022</p>
+              <p>Tel Aviv<br>Israel</p>
             </div>
             
             <div>
               <i class="fa fa-envelope"></i>
-              <p>info@example.com</p>
+              <p>info@pentom.com</p>
             </div>
             
             <div>
               <i class="fa fa-phone"></i>
-              <p>+1 5589 55488 55s</p>
+              <p>+972 52 8136 894</p>
             </div>
             
           </div>
@@ -475,15 +466,15 @@
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validation"></div>
                 </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="size" id="size" placeholder="Company size (number)" />
+                <div class="validation"></div>
+              </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <textarea class="form-control" name="message" id="msg" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center"><button type="submit" id="btnSubmit">Send Message</button></div>
             </form>
           </div>
         </div>
@@ -530,7 +521,7 @@
   <!-- Template Specisifc Custom Javascript File -->
   <script src="js/custom.js"></script>
   
-  <script src="contactform/contactform.js"></script>
+  <!--<script src="contactform/contactform.js"></script>-->
   
     
 </body>
