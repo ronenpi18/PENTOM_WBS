@@ -50,7 +50,7 @@
       var size = document.getElementById("size").value;
       var msg = document.getElementById("msg").value;
       var name = document.getElementById("name").value;
-      xhttp.open("GET", "https://pentom.herokuapp.com/form?email=" + email+"&name="+name+"&msg="+msg+"&size="+size, true);
+      xhttp.open("GET", "https://pentom.herokuapp.com/form/?email=" + email+"&name="+name+"&msg="+msg+"&size="+size, true);
       xhttp.send();
       document.getElementById("btnSubmit").textContent="Thanks A lot, we will contact you shortly!";
     }
@@ -373,7 +373,7 @@
         <div class="col-md-12">
           <h3 class="section-title">Our Team</h3>
           <div class="section-title-divider"></div>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <p class="section-description">"Great things in business are never done by one person. They're done by a team of people." -STEVE JOBS</p>
         </div>
       </div>
       
@@ -390,8 +390,9 @@
             <h4>Daniel Pinhasov</h4>
             <span>Chief Financial Officer</span>
             <div class="social">
-              <a href=""><i class="fa fa-facebook"></i></a>
+              <a href="https://www.facebook.com/daniel.pinhasov2"><i class="fa fa-facebook"></i></a>
               <a href=""><i class="fa fa-linkedin"></i></a>
+              <a href="mailto:danil2109@gmail.com"><i class="fa fa-envelope"></i> </a>
             </div>
           </div>
         </div>
@@ -399,10 +400,12 @@
           <div class="member">
             <div class="pic"><img src="img/ronen.jpg" alt=""></div>
             <h4>Ronen Pinhasov</h4>
-            <span>CTO</span>
+            <span>Chief Technical Officer</span>
             <div class="social">
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.facebook.com/ronenpi18"><i class="fa fa-facebook"></i></a>
+              <a href="https://il.linkedin.com/in/ronenpinhasov"><i class="fa fa-linkedin"></i></a>
+              <a href="mailto:ronenpi1802@gmail.com"><i class="fa fa-envelope"></i> </a>
+
             </div>
           </div>
         </div>
@@ -452,25 +455,23 @@
             
           </div>
         </div>
-        
+
         <div class="col-md-5 col-md-push-2">
           <div class="form">
             <form role="form" >
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"  />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"  />
                   <div class="validation"></div>
                 </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="size" id="size" placeholder="Company size (number)" />
-                <div class="validation"></div>
               </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" id="msg" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
+                  <textarea class="form-control" name="message" id="msg" rows="5" data-msg="Please write something for us" placeholder="Message"></textarea>
                 </div>
                 <div class="text-center">
                   <button type="submit" id="btnSubmit" onclick="form()">Send Message</button>
