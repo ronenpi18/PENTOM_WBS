@@ -9,6 +9,7 @@ var path    = require("path");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/'));
+var nodemailer = require('nodemailer');
 
 
 app.get('/',function(req,res){
@@ -17,7 +18,7 @@ app.get('/',function(req,res){
     if(req.query.email!=null ){
         var name = req.query.name;
         var email = req.query.email;
-        var subject = req.query.subject;
+      //  var subject = req.query.subject;
         var msg = req.query.msg;
         var companySize = req.query.size;
         var objectForm = {
@@ -28,11 +29,34 @@ app.get('/',function(req,res){
 
         }
         console.log(req,query.email)
-        fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
-            if(err) {
-                return console.log(err);
+        //fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
+        //    if(err) {
+        //        return console.log(err);
+        //    }
+        //    res.send(console.log("The file was saved!"));
+        //});
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'ronenpi18@gmail.com',
+                pass: 'rubi;nxpr;1'
             }
-            res.send(console.log("The file was saved!"));
+        });
+
+        var mailOptions = {
+            from: 'ronenpi18@gmail.com',
+            to: 'ronenpi1802@gmail.com',
+            subject: objectForm.email,
+            text: objectForm
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
         });
 
     }
