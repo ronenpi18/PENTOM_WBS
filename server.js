@@ -20,7 +20,7 @@ app.get('/',function(req,res){
 
 
 app.get('/subscribe', function (req, res) {
-    console.log(req,query.email)
+    console.log(req.query.email)
     //fs.appendFile(path.join(__dirname+"/tmp/emails.txt"), req.query.email+"\n", function(err) {
     //    if(err) {
     //        return console.log(err);
@@ -34,7 +34,7 @@ app.get('/subscribe', function (req, res) {
             "email":email,
 
         }
-        console.log(req,query.email)
+        console.log(req.query.email)
         //fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
         //    if(err) {
         //        return console.log(err);
@@ -46,7 +46,7 @@ app.get('/subscribe', function (req, res) {
             service: 'gmail',
             auth: {
                 user: 'ronenpi18@gmail.com',
-                pass: 'rubi;nxpr;1'
+                pass: "rubi;nxpr;1"
             }
         });
 
@@ -69,25 +69,59 @@ app.get('/subscribe', function (req, res) {
 
 })
 app.get('/form', function (req, res) {
-    var name = req.query.name;
-    var email = req.query.email;
-    var subject = req.query.subject;
-    var msg = req.query.msg;
-    var companySize = req.query.size;
-    var objectForm = {
-        "name":name,
-        "email":email,
-        "msg":msg,
-        "size":companySize
+
+    console.log(req.query.email)
+    //fs.appendFile(path.join(__dirname+"/tmp/emails.txt"), req.query.email+"\n", function(err) {
+    //    if(err) {
+    //        return console.log(err);
+    //    }
+    //    res.send(console.log("The file was saved!"));
+    //});
+    if(req.query.email!=null ){
+        //  var subject = req.query.subject;
+        var name = req.query.name;
+        var email = req.query.email;
+        var subject = req.query.subject;
+        var msg = req.query.msg;
+        var companySize = req.query.size;
+        var objectForm = {
+            "name":name,
+            "email":email,
+            "msg":msg,
+            "size":companySize
+
+        }
+        //fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
+        //    if(err) {
+        //        return console.log(err);
+        //    }
+        //    res.send(console.log("The file was saved!"));
+        //});
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'ronenpi18@gmail.com',
+                pass: "rubi;nxpr;1"
+            }
+        });
+
+        var mailOptions = {
+            from: 'ronenpi18@gmail.com',
+            to: 'ronenpi1802@gmail.com',
+            subject: objectForm.email,
+            text: objectForm.stringify
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
 
     }
-    console.log(req,query.email)
-    fs.appendFile(path.join(__dirname+"/tmp/demos.txt"), objectForm.stringify +"\n"+"-----------------------------------", function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        res.send(console.log("The file was saved!"));
-    });
 
 })
 

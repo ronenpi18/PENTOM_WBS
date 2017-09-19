@@ -51,7 +51,7 @@
       var size = document.getElementById("size").value;
       var msg = document.getElementById("msg").value;
       var name = document.getElementById("name").value;
-      xhttp.open("GET", "https://pentom.herokuapp.com/?email=" + email+"&name="+name+"&msg="+msg+"&size="+size, true);
+      xhttp.open("GET", "https://pentom.herokuapp.com/form?email=" + email+"&name="+name+"&msg="+msg+"&size="+size, true);
       xhttp.send();
       document.getElementById("btnsub1").textContent="Thanks A lot, we will contact you shortly!";
     }
