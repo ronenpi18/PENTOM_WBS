@@ -15,17 +15,23 @@ var nodemailer = require('nodemailer');
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/index.html'));
     //__dirname : It will resolve to your project folder.
+
+});
+
+
+app.get('/subscribe', function (req, res) {
+    console.log(req,query.email)
+    //fs.appendFile(path.join(__dirname+"/tmp/emails.txt"), req.query.email+"\n", function(err) {
+    //    if(err) {
+    //        return console.log(err);
+    //    }
+    //    res.send(console.log("The file was saved!"));
+    //});
     if(req.query.email!=null ){
-        var name = req.query.name;
         var email = req.query.email;
-      //  var subject = req.query.subject;
-        var msg = req.query.msg;
-        var companySize = req.query.size;
+        //  var subject = req.query.subject;
         var objectForm = {
-            "name":name,
             "email":email,
-            "msg":msg,
-            "size":companySize
 
         }
         console.log(req,query.email)
@@ -48,7 +54,7 @@ app.get('/',function(req,res){
             from: 'ronenpi18@gmail.com',
             to: 'ronenpi1802@gmail.com',
             subject: objectForm.email,
-            text: objectForm
+            text: "subs"
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -60,15 +66,6 @@ app.get('/',function(req,res){
         });
 
     }
-});
-app.get('/subscribe', function (req, res) {
-    console.log(req,query.email)
-    fs.appendFile(path.join(__dirname+"/tmp/emails.txt"), req.query.email+"\n", function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        res.send(console.log("The file was saved!"));
-    });
 
 })
 app.get('/form', function (req, res) {
