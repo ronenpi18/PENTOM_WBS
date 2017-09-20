@@ -45,14 +45,14 @@ app.get('/subscribe', function (req, res) {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'ronenpi18@gmail.com',
-                pass: "rubi;nxpr;1"
+                user: 'help.pentom@gmail.com',
+                pass: "QWeasd123"
             }
         });
 
         var mailOptions = {
-            from: 'ronenpi18@gmail.com',
-            to: 'ronenpi1802@gmail.com',
+            from: 'help.pentom@gmail.com',
+            to: 'help.pentom@gmail.com',
             subject: objectForm.email,
             text: "subs"
         };
@@ -68,6 +68,7 @@ app.get('/subscribe', function (req, res) {
     }
 
 })
+
 app.get('/form', function (req, res) {
 
     console.log(req.query.email)
@@ -101,16 +102,16 @@ app.get('/form', function (req, res) {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'ronenpi18@gmail.com',
-                pass: "rubi;nxpr;1"
+                user: 'help.pentom@gmail.com',
+                pass: "QWeasd123"
             }
         });
 
         var mailOptions = {
-            from: 'ronenpi18@gmail.com',
-            to: 'ronenpi1802@gmail.com',
-            subject: objectForm.email,
-            text: objectForm.stringify
+            from: 'help.pentom@gmail.com',
+            to: 'help.pentom@gmail.com',
+            subject: "msg from Pentom Page:"+objectForm.size,
+            text: "Hello, You Have Got A Msg from the contact form, please see the following details:\n\n\n ---------------\n\n"+"name:"+objectForm.name+"\n email:"+objectForm.email +"\n subject:"+objectForm.size+"\n msg:"+objectForm.msg+"\n\n ---------------------\n regards"
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -124,7 +125,6 @@ app.get('/form', function (req, res) {
     }
 
 })
-
 
 // finally, let's start our server...
 var server = app.listen( process.env.PORT || 8081, function(){
